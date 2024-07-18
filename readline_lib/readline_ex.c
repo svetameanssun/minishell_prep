@@ -1,3 +1,4 @@
+
 #include "readline_ex.h"
 
 /**
@@ -20,53 +21,72 @@
  * 
  * 			
  */
-
-
 /*int main() {
-    char *input = "";
-    char *new_line = "This is the new line content";
+    char *input;
 
-    // get initial input
-    input = readline("Enter some text: ");
-    printf("Original input: %s\n", input);
+    // Initialize Readline
+    rl_initialize();
 
-    // replace the current line with new content
-    rl_replace_line(new_line, 0);
-    printf("New input: %s\n", rl_line_buffer);
+    // Simulate reading a line of input
+    input = readline("Prompt> ");
+    
+    // Replace the current line with a new line of text
+    rl_replace_line("This is the new line", 1);
+    
+    // Force the display to update
+    rl_redisplay();
+    
+    // Clean up
+    free(input);
 
     return 0;
 }*/
-
+/*int main()
+{
+	char *repl = "replacement!";
+	char *str;
+	str = readline("Write '+' \n");
+	printf("\nThe line you wrote, that was saved in rl_line_buffer: %s\n", rl_line_buffer);
+	rl_replace_line(repl, 0);
+	rl_redisplay();
+	int i = 0;
+	sleep(1);
+	//printf("\nThe line that replaced your line in rl_line_buffer: %s\n", rl_line_buffer);
+}*/
 int main()
 {
 	char *str;
 	char str1[100] = " - save in history";
 	char str2[100] = " - and this";
-	char * new_line = "This is new line content";
+	char * repl = "replacement!";
 	char *str3;
 	char *str4;
 	int i = 0;
 	
 
-	while(i < 10)
+	while(1)
 	{
 		
 		str = readline("\nIntroduce text: ");
-		str3 = ft_strjoin(ft_itoa(i), str1);
-		str4 = ft_strjoin(ft_itoa(i), str2);
-		add_history(str);
-		add_history(str3);
-		add_history(str4);
-		//rl_replace_line(new_line, 0);
-		//rl_redisplay();
-		str = readline("Introduce more text: ");
+		if (str == NULL)
+			exit(0);
+		//str3 = ft_strjoin(ft_itoa(i), str1);
+		//str4 = ft_strjoin(ft_itoa(i), str2);
+		//add_history(str);
+		//add_history(str3);
+		//add_history(str4);
+		//str = readline("\nIntroduce more text: ");
+		rl_replace_line(repl, 0);
+		
 		//printf("New input: %s\n", rl_line_buffer);
-		printf("-> %s <-", str);
-		free(str);
-		free(str3);
-		free(str4);
+		//printf("-> %s <-", str);
+		
 		i++;
 		rl_on_new_line();
+		rl_redisplay();
+		free(str);
+		//free(str3);
+		//free(str4);
 	}
 	printf("Historial antes de limpiar: %d\n", history_length);
 	rl_clear_history();
