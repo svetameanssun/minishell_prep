@@ -10,5 +10,15 @@ void handler_sig(int sig)
 int main(void)
 {
 	sigset_t set;
-	sigfillset(&set);
+	sigemptyset(&set);
+	struct sigaction act;
+	struct sigaction oldact;
+	act.sa_handler = &handler_sig;
+	sigaction(SIGINT, &act, &oldact);
+	while(1)
+	{
+		printf("Running...\n");
+		sleep(50);
+	}
+
 }
