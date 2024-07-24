@@ -25,7 +25,6 @@ void handle_sigcont(int sig)
 	// but it doesn't substitute the signal!
 	// SIGCONT is different!
 	
-	// Som
 }
 
 int main(int argc, char ** argv)

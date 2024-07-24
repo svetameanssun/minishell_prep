@@ -9,22 +9,22 @@
 // or make my process to do another thing intead of stopping?
 // I Want to handle this signal differently. How to do it? 
 
-void handle_sigtstp(int sig)
+/*void handle_sigtstp(int sig)
 {
 	printf("Stop not allowed!\n");
-}
+}*/
 
 
 int main(int argc, char **argv)
 {
 
-	struct sigaction sa;
-	sa.sa_handler = &handle_sigtstp;
-	sa.sa_flags = SA_RESTART; // we need this because we use the combination of
+	//struct sigaction sa;
+	//sa.sa_handler = &handle_sigtstp;
+	//sa.sa_flags = SA_RESTART; // we need this because we use the combination of
 							  // SIGTSTP and scanf, it doesn't work well
 							  // if we do not provide this flag
 	
-	sigaction(SIGTSTP, &sa, NULL);
+	//sigaction(SIGTSTP, &sa, NULL);
 	int x;
 	printf("Input number: \n");
 	scanf("%d", &x);
