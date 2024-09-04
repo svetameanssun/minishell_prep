@@ -118,13 +118,22 @@ int sum_args(t_token *token_list)
 	}
 	return res;
 }
+void print_list(t_token *node)
+{
+	while (node)
+	{
+		printf("type: %d, value> %d\n", node->type, node->value);
+		node = node->next;
+	}
+}
+
 
 int main(int argc, char **argv)
 {
 	t_token *token_list;
 
-	int res;
 	fill_token_list(argc, argv, &token_list);
+	print_list(token_list);
 	printf("Result = %d\n", sum_args(token_list));
 
 
