@@ -9,12 +9,12 @@ int main()
 {
 	DIR *dir;
 
-	/*int i = 0;
+	int i = 0;
 	while(i <= 133)
 	{
 		printf("%d - %s\n", i, strerror(i));
 		i++;
-	}*/
+	}
 	opendir("asasasasa");
 	printf("%d - %s\n", errno, strerror(errno));
 	return(0);
