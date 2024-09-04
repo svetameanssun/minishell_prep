@@ -1,0 +1,8 @@
+cat hola | grep "hola" | cat
+cat hola || grep "hola" || cat
+cat hola | grep "hola" || cat #theresult here if different
+cat hola.txt | grep "hola" || cat bash_exp.txt | grep "||"
+cat hola.txt | grep "hola" && cat bash_exp.txt | grep "||"
+((ls || (ls && ls && ls) && ls) || ls)
+((ls || (ls && ls && ls) && ls) || ls);
+
